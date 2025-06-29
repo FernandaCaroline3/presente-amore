@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login + Amorflix</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #000;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* TELA DE LOGIN */
+    .login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to top, #000, #111);
+    }
+
+    .login-box {
+      background-color: #1c1c1c;
+      padding: 40px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 20px #8209e5;
+    }
+
+    .login-box h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .login-box input,
+    .login-box button {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .login-box input {
+      background: #333;
+      color: white;
+    }
+
+    .login-box button {
+      background-color: #8209e5;
+      color: white;
+      cursor: pointer;
+    }
+
+    .login-box button:hover {
+      background-color: #6d07c1;
+    }
+
+    /* NAVEGAÇÃO */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #111;
+      padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      color: #8209e5;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #8209e5;
+    }
+
+    .hero {
+      background: url('banner.jpeg') no-repeat center center/cover;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-text {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 10px;
+    }
+
+    .carousel-section {
+      padding: 40px;
+      background-color: #111;
+    }
+
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+    }
+
+    .carousel img {
+      width: 300px;
+      height: 170px;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .carousel img:hover {
+      transform: scale(1.05);
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .left { left: 0; }
+    .right { right: 0; }
+
+    .info-section {
+      padding: 60px 40px;
+      background-color: #000;
+      text-align: center;
+    }
+
+    .info-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: #1c1c1c;
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    footer {
+      background: #111;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div class="login-container" id="loginPage">
+    <div class="login-box">
+      <h2>Nossa Página</h2>
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Senha" required />
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div id="mainSite" class="hidden">
+    <header class="navbar">
+      <h1 class="logo">Amor</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#">Eu</a></li>
+          <li><a href="#">te</a></li>
+          <li><a href="#">amo</a></li>
+          <li><a href="#">muito!</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-text">
+        <h2>Presente simples,</h2>
+        <p>Mas feito com muito amor, você merece mais do que isso, e eu vou sempre dar o meu melhor para conseguir te dar tudo o que merece.</p>
+      </div>
+    </section>
+
+    <section class="carousel-section">
+      <h3 style="font-size: 1.5rem; color: #8209e5;">Destaques</h3>
+      <pre style="font-size: 1rem;"> Algumas fotos nossas de momentos que eu adoraria viver de novo.</pre>
+      <br>
+      <div class="carousel-container">
+        <button class="carousel-btn left" onclick="scrollCarousel(-1)">&#10094;</button>
+        <div class="carousel" id="carousel">
+          <img src="img1.jpeg" alt="Imagem 1" />
+          <img src="img2.jpeg" alt="Imagem 2" />
+          <img src="img3.jpeg" alt="Imagem 3" />
+          <img src="img4.jpeg" alt="Imagem 4" />
+          <img src="img5.jpeg" alt="Imagem 5" />
+        </div>
+        <button class="carousel-btn right" onclick="scrollCarousel(1)">&#10095;</button>
+      </div>
+    </section>
+
+    <section class="info-section">
+      <h3 style="font-size: 1.5rem; color: #8209e5;">Por que eu te amo?</h3>
+      <div class="info-cards">
+        <div class="card">
+          <p>Você é muito especial pra mim, minha luz, meu amor todinho. Sinto que com você a vida é mais feliz e incrível.</p>
+        </div>
+        <div class="card">
+          <p>Eu quero te ver feliz, te fazer feliz, fazer você se sentir amado do jeitinho que merece. Você sempre pode contar comigo pra tudo!</p>
+        </div>
+        <div class="card">
+          <p>Você faz eu me sentir a melhor garota do mundo, eu me sinto protegida, confortável e muito feliz ao seu lado. Amor, você me trata com tanto carinho que faz eu querer chorar de tanta felicidade e amor, e é por isso e por todos os seus jeito, trejeitos e detalhes que eu te amo.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Amor, você é meu tudo tudinho!</p>
+    </footer>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (email && password) {
+        document.getElementById("loginPage").classList.add("hidden");
+        document.getElementById("mainSite").classList.remove("hidden");
+      }
+    });
+
+    function scrollCarousel(direction) {
+      const carousel = document.getElementById("carousel");
+      const scrollAmount = 320;
+      carousel.scrollBy({
+        left: direction * scrollAmount,
+        behavior: "smooth"
+      });
+    }
+  </script>
+</body>
+</html>
